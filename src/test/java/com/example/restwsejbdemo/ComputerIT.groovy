@@ -8,18 +8,16 @@ import com.google.gson.GsonBuilder
 import com.jayway.restassured.RestAssured
 import com.jayway.restassured.http.ContentType
 import org.junit.BeforeClass
+import org.junit.FixMethodOrder
 import org.junit.Test
-
-import javax.ws.rs.core.MediaType
+import org.junit.runners.MethodSorters
 
 import static com.jayway.restassured.RestAssured.given
 import static com.jayway.restassured.RestAssured.when
-
+@FixMethodOrder(MethodSorters.NAME_ASCENDING)
 class ComputerIT
 {
     final String MODEL = "Razor"
-    final String CPU = "IntelI9"
-    final String GPU = "TitanX"
     final double PRICE = 3999.0
     final String FIRST_OWNER_NAME = "Janek"
     final String FIRST_OWNER_SURNAME = "Dzbanek"
@@ -33,7 +31,18 @@ class ComputerIT
     {
         RestAssured.baseURI = "http://localhost"
         RestAssured.port = 8080
-        RestAssured.basePath = "/restwsejbdemo/computer"
+        RestAssured.basePath = "/myapp/computer"
+    }
+
+    @Test
+    void "resource should return computer by model" ()
+    {
+        given().
+                contentType(ContentType.JSON).
+                when()
+                .get("/bymodel/{model}", "Razor").
+                then().
+                statusCode(500)
     }
 
     @Test
@@ -43,7 +52,7 @@ class ComputerIT
         def jsonComputer = gson.toJson(new Computer(MODEL,PRICE))
 
         given().
-            contentType(MediaType.APPLICATION_JSON).
+            contentType(ContentType.JSON).
             body(jsonComputer).
         when().
             post("add").
@@ -69,5 +78,28 @@ class ComputerIT
             .post("add").
         then()
             .statusCode(201)
+    }
+
+    @Test
+    void "resource return status 200 when Lazy Initalization Exception was caught "()
+    {
+        given().
+
+        when().
+            get("/lazyexp").
+        then().
+            assertThat().
+            statusCode(200)
+    }
+
+    @Test
+    void "resource should return 200 when many owners are added to one computer (many to many relation test" ()
+    {
+        given().
+        when().
+            get("/manytomany").
+        then()
+            .assertThat()
+            .statusCode(200)
     }
 }

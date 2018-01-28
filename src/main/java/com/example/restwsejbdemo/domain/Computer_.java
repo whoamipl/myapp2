@@ -9,12 +9,12 @@ import javax.persistence.metamodel.StaticMetamodel;
 @StaticMetamodel(Computer.class)
 public abstract class Computer_ {
 
-    public static volatile SingularAttribute<Computer, Double> price;
-    public static volatile SingularAttribute<Computer, String> cpu;
-    public static volatile SingularAttribute<Computer, Producer> producer;
-    public static volatile SingularAttribute<Computer, Warranty> warranty;
-    public static volatile SingularAttribute<Computer, String> model;
-    public static volatile ListAttribute<Computer, Owner> owners;
-    public static volatile SingularAttribute<Computer, Long> id;
-    public static volatile SingularAttribute<Computer, String> gpu;
+	public static volatile SingularAttribute<Computer, Double> price;
+	public static volatile SingularAttribute<Computer, Producer> producer;
+	public static volatile SingularAttribute<Computer, Warranty> warranty;
+	public static volatile SingularAttribute<Computer, String> model;
+	public static volatile ListAttribute<Computer, Owner> owners;
+	public static volatile SingularAttribute<Computer, Long> id;
+
 }
+

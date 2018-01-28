@@ -25,7 +25,7 @@ class OwnerIT
     {
         RestAssured.baseURI = "http://localhost"
         RestAssured.port = 8080
-        RestAssured.basePath = "/restwsejbdemo/owner"
+        RestAssured.basePath = "/myapp/owner"
 
     }
 

@@ -31,6 +31,7 @@ public class ProducerRESTService {
     }
 
     @POST
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addProducer(Producer company) {
         producerManager.addProducer(company);
@@ -38,7 +39,7 @@ public class ProducerRESTService {
     }
 
     @DELETE
-    @Path("/usun/{id}")
+    @Path("/remove/{id}")
     public void deleteBook(@PathParam("id") Long id) {
         producerManager.deleteProducer(producerManager.getProducer(id));
     }

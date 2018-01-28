@@ -24,6 +24,7 @@ public class WarrantyRESTService {
     }
 
     @POST
+    @Path("/add")
     @Consumes(MediaType.APPLICATION_JSON)
     public Response addWarranty(Warranty warranty) {
         entityManager.persist(warranty);
