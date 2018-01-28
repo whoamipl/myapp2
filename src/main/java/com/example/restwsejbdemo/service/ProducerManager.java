@@ -12,20 +12,20 @@ public class ProducerManager {
     @PersistenceContext
     EntityManager em;
 
-    public void addProducer(Producer company) {
-        em.persist(company);
+    public void addProducer(Producer producer) {
+        em.persist(producer);
     }
 
-    public void deleteProducer(Producer company) {
-        em.remove(company);
+    public void deleteProducer(Producer producer) {
+        em.remove(producer);
     }
 
     public Producer getProducer(Long id) {
         return em.find(Producer.class, id);
     }
 
-    public Producer updateProducer(Producer company) {
-        return em.merge(company);
+    public Producer updateProducer(Producer producer) {
+        return em.merge(producer);
     }
 
 }

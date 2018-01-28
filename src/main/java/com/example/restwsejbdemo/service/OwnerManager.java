@@ -12,20 +12,20 @@ public class OwnerManager {
     @PersistenceContext
     EntityManager em;
 
-    public void addOwner(Owner person) {
-        em.persist(person);
+    public void addOwner(Owner owner) {
+        em.persist(owner);
     }
 
-    public void deleteOwner(Owner person) {
-        em.remove(person);
+    public void deleteOwner(Owner owner) {
+        em.remove(owner);
     }
 
     public Owner getOwner(Long id) {
         return em.find(Owner.class, id);
     }
 
-    public Owner updateOwner(Owner person) {
-        return em.merge(person);
+    public Owner updateOwner(Owner owner) {
+        return em.merge(owner);
     }
 
     public void clearOwners() {
