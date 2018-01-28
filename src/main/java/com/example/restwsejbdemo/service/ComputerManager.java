@@ -42,7 +42,7 @@ public class ComputerManager {
     }
 
     @SuppressWarnings("unchecked")
-    public List<Object[]> getComputersByOwnerCity (String city) {
+    public List<Object[]> getComputersByOwnerCity(String city) {
         return entityManager.createNamedQuery("computerOwner.findByOwnerCity").setParameter("city", city).getResultList();
     }
 

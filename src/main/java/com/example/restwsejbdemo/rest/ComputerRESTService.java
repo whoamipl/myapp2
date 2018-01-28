@@ -70,7 +70,7 @@ public class ComputerRESTService {
         JsonArrayBuilder authors = Json.createArrayBuilder();
 
         for (Object[] o : ownerCities) {
-            String name  = (String) o[0];
+            String name = (String) o[0];
             String surname = (String) o[1];
             String model = (String) o[2];
 
@@ -99,8 +99,8 @@ public class ComputerRESTService {
     @Transactional
     public String testManyToManyRelation() {
 
-        Owner owner1 = new Owner("Janek", "Dzbanek","Sopot");
-        Owner owner2 = new Owner("Franek", "Poranek","Gdynia");
+        Owner owner1 = new Owner("Janek", "Dzbanek", "Sopot");
+        Owner owner2 = new Owner("Franek", "Poranek", "Gdynia");
         Computer computer1 = new Computer("MSI Razor X", 2999.99);
 
         computerManager.addComputer(computer1);
@@ -120,8 +120,8 @@ public class ComputerRESTService {
     @Produces(MediaType.TEXT_PLAIN)
     public Boolean lazyInitialization() {
 
-        Owner owner1 = new Owner("Ewa", "Mewa","Gdynia");
-        Owner owner2 = new Owner("Franek", "Dzbanek","Sopot");
+        Owner owner1 = new Owner("Ewa", "Mewa", "Gdynia");
+        Owner owner2 = new Owner("Franek", "Dzbanek", "Sopot");
 
         List<Owner> owners = new ArrayList<>();
         owners.add(owner1);
@@ -134,8 +134,8 @@ public class ComputerRESTService {
         computerManager.addComputer(computer);
 
         Computer addedComputer = computerManager
-                                        .getComputer((long) computerManager
-                                        .getAllComputers().size());
+                .getComputer((long) computerManager
+                        .getAllComputers().size());
         try {
             System.out.println(addedComputer.getProducer().getName());
         } catch (org.hibernate.LazyInitializationException e) {

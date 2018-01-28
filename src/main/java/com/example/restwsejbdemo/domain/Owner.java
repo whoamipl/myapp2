@@ -12,10 +12,13 @@ import java.util.List;
 })
 public class Owner {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String name;
     private String surname;
     private String city;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Computer> computers = new ArrayList<>();
 
     public Owner(String name, String surname, String city) {
@@ -28,8 +31,6 @@ public class Owner {
     public Owner() {
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
@@ -38,7 +39,7 @@ public class Owner {
         this.id = id;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     public List<Computer> getComputers() {
         return computers;
     }

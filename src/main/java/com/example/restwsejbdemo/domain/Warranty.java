@@ -7,7 +7,8 @@ import javax.persistence.Id;
 
 @Entity
 public class Warranty {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     String name;
 
@@ -18,8 +19,7 @@ public class Warranty {
         this.name = name;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Long getId() {
         return id;
     }

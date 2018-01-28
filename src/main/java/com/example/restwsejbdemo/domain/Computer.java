@@ -14,11 +14,16 @@ import java.util.List;
 })
 public class Computer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String model;
+    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private List<Owner> owners = new ArrayList<>();
     private double price;
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Producer producer;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     private Warranty warranty;
 
 
@@ -38,8 +43,7 @@ public class Computer {
         this.warranty = warranty;
     }
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     public Long getId() {
         return id;
     }
@@ -64,7 +68,7 @@ public class Computer {
         this.price = price;
     }
 
-    @ManyToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+
     public List<Owner> getOwners() {
         return owners;
     }
@@ -82,7 +86,6 @@ public class Computer {
     }
 
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     public Producer getProducer() {
         return producer;
     }
@@ -91,7 +94,6 @@ public class Computer {
         this.producer = producer;
     }
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     public Warranty getWarranty() {
         return warranty;
     }

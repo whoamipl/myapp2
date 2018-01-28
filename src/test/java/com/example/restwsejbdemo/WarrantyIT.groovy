@@ -1,6 +1,5 @@
 package com.example.restwsejbdemo
 
-import com.example.restwsejbdemo.domain.Owner
 import com.example.restwsejbdemo.domain.Warranty
 import com.google.gson.GsonBuilder
 import com.jayway.restassured.RestAssured

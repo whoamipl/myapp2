@@ -12,19 +12,19 @@ public class WarrantyManager {
     @PersistenceContext
     EntityManager entityManager;
 
-    public void addPlaceOnShelf(Warranty pos) {
+    public void addWarranty(Warranty pos) {
         entityManager.persist(pos);
     }
 
-    public void deletePlaceOnShelf(Warranty pos) {
+    public void deleteWarranty(Warranty pos) {
         entityManager.remove(pos);
     }
 
-    public Warranty getPlaceOnShelf(Long id) {
+    public Warranty getWarranty(Long id) {
         return entityManager.find(Warranty.class, id);
     }
 
-    public Warranty updatePlaceOnShelf(Warranty pos) {
+    public Warranty updateWarranty(Warranty pos) {
         return entityManager.merge(pos);
     }
 

@@ -102,4 +102,14 @@ class ComputerIT
             .assertThat()
             .statusCode(200)
     }
+
+    @Test
+    void "resource should return buyed computers by city"()
+    {
+        given().
+        when()
+            .get("/bycity/{city}", "Radom").
+        then()
+            .statusCode(200)
+    }
 }

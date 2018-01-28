@@ -9,6 +9,8 @@ import javax.validation.constraints.NotNull;
 @Entity
 public class Producer {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @NotNull
     private String name;
@@ -21,8 +23,6 @@ public class Producer {
     }
 
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long getId() {
         return id;
     }
